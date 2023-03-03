@@ -1,64 +1,72 @@
 /* eslint-disable prettier/prettier */
-// AddFaculties.jsx
+// import React, { useState } from 'react';
 
-import React, { useState } from 'react';
+// function Home() {
+//   const [csvData, setCsvData] = useState([]);
+//   const [responseData, setResponseData] = useState([]);
+//   const bearerToken =
+//     'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDAwOTQ1ZjcwOGU1MGZhOWVmMGMwNTgiLCJlbWFpbCI6Imtra2Z1bmRlMjJAZ21haWwuY29tIiwiaWF0IjoxNjc3Nzc3MzMwLCJleHAiOjE2NzkwNzMzMzB9.uBF1WMSXmmDlYVkDSB4Kd6N-e3nyCWRg9bOtkTzJQVw';
 
-const AddFaculties = () => {
-  const [file, setFile] = useState(null);
-  const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
-  const bearerToken =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NDAwOTQ1ZjcwOGU1MGZhOWVmMGMwNTgiLCJlbWFpbCI6Imtra2Z1bmRlMjJAZ21haWwuY29tIiwiaWF0IjoxNjc3Nzc3MzMwLCJleHAiOjE2NzkwNzMzMzB9.uBF1WMSXmmDlYVkDSB4Kd6N-e3nyCWRg9bOtkTzJQVw';
+//   const handleOnDrop = async (event) => {
+//     const file = event.target.files[0];
+//     const formData = new FormData();
+//     formData.append('file', file);
 
-  const handleFileChange = (event) => {
-    setFile(event.target.files[0]);
-  };
+//     try {
+//       const response = await fetch('http://localhost:5000/api/users/add-faculties', {
+//         method: 'POST',
+//         body: formData,
+//         headers: {
+//           Authorization: `Bearer ${bearerToken}`
+//         }
+//       });
+//       const data = await response.json();
+//       console.log('Success:', data);
+//       setResponseData(data); // set the data received from the server to the state variable
+//     } catch (error) {
+//       console.error('Error:', error);
+//     }
+//   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+//   return (
+//     <div>
+//       <input type="file" accept=".csv" onChange={handleOnDrop} />
+//       <table>
+//         <tbody>
+//           {csvData.map((row, index) => (
+//             <tr key={index}>
+//               <td>{row[0]}</td>
+//               <td>{row[1]}</td>
+//               <td>{row[2]}</td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//       {responseData.length > 0 && (
+//         <div>
+//           <h3>Data received from the server:</h3>
+//           <table>
+//             <tbody>
+//               {responseData.map((row, index) => (
+//                 <tr key={index}>
+//                   <td>{row.name}</td>
+//                   <td>{row.email}</td>
+//                   <td>{row.department}</td>
+//                 </tr>
+//               ))}
+//             </tbody>
+//           </table>
+//         </div>
+//       )}
+//     </div>
+//   );
+// }
 
-    const formData = new FormData();
-    formData.append('file', file);
+// export default Home;
+import React from 'react';
 
-    try {
-      const response = await fetch('localhost:5000/api/users/add-faculties', {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${bearerToken}`
-        },
-        body: formData
-      });
+function index() {
+  return <div>index</div>;
+}
 
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-
-      setSuccess(true);
-      setError(null);
-      console.log(await response.json());
-    } catch (error) {
-      console.error(error);
-      setSuccess(false);
-      setError('Error adding faculties.');
-    }
-
-    // Reset the form
-    event.target.reset();
-    setFile(null);
-  };
-
-  return (
-    <div>
-      <h1>Add Faculties</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="file-input">Upload CSV or Excel file:</label>
-        <input type="file" id="file-input" name="file" accept=".csv" onChange={handleFileChange} />
-        <button type="submit">Add Faculties</button>
-      </form>
-      {error && <p>{error}</p>}
-      {success && <p>Faculties added successfully!</p>}
-    </div>
-  );
-};
-
-export default AddFaculties;
+export default index;

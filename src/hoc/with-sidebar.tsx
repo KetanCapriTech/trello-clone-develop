@@ -57,6 +57,30 @@ const withSidebar = (App, props) => {
             buttonName: 'Faculty',
             page: 'Faculty',
             icon: AiFillFlag
+          },
+          {
+            path: '/admin/dashboard/studentCsv',
+            buttonName: 'StudentCsv',
+            page: 'StudentCsv',
+            icon: AiFillFlag
+          },
+          {
+            path: '/admin/dashboard/facultyCsv',
+            buttonName: 'FacultyCsv',
+            page: 'facultyCsv',
+            icon: AiFillFlag
+          },
+          {
+            path: '/admin/dashboard/addFaculty',
+            buttonName: 'Add-Faculty',
+            page: 'addFaculty',
+            icon: AiFillFlag
+          },
+          {
+            path: '/admin/dashboard/addStudent',
+            buttonName: 'Add-Student',
+            page: 'addStudent',
+            icon: AiFillFlag
           }
         );
       }
